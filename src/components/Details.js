@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {duration} from '../utils'
+import { duration } from '../utils'
 
 class Details extends Component {
   constructor(props) {
@@ -7,7 +7,7 @@ class Details extends Component {
     this.state = { loading: true }
   }
   componentDidMount() {
-    this.props.loadJob(this.props.match.params.id, () => this.setState({loading: false}))
+    this.props.loadJob(this.props.match.params.id, () => this.setState({ loading: false }))
     this.interval = setInterval(() => this.props.loadJob(this.props.match.params.id), 5000)
   }
 
@@ -17,7 +17,7 @@ class Details extends Component {
 
   render() {
     return (
-      <main className={`details ${this.state.loading ? 'loading': ''}`}>
+      <main className={`details ${this.state.loading ? 'loading' : ''}`}>
         <h1>Details</h1>
         <dl>
           <dt>
@@ -42,7 +42,7 @@ class Details extends Component {
             <label>Filter</label>
           </dt>
           <dd>
-            {this.props.job.filter}
+            {this.props.job.filter || '-'}
           </dd>
           <dt>
             <label>Parameters</label>
@@ -76,19 +76,16 @@ class Details extends Component {
           </dt>
           <dd className="queued">{this.props.job.created}</dd>
           <dt>
-            <label>Started</label>
-          </dt>
-          <dd className="started">
-          </dd>
-          <dt>
             <label>Processing</label>
           </dt>
           <dd className="processing">
+            {this.props.job.processing}
           </dd>
           <dt>
             <label>Finished</label>
           </dt>
           <dd className="finished">
+            {this.props.job.finished}
           </dd>
         </dl>
       </main>

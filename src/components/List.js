@@ -30,7 +30,7 @@ class List extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.loading && <tr><td colspan="5">Loading...</td></tr>}
+            {this.state.loading && <tr><td colSpan={5}>Loading...</td></tr>}
             {this.props.jobs.map(job => (
               <Status id={job.id} key={job.id}
                 status={job.status}

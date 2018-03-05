@@ -36,8 +36,10 @@ export const addDuration = job => {
   const now = Date.now()
   const created = new Date(job.created).getTime()
   const processing = job.processing ? new Date(job.processing).getTime() : null
+  const finished = job.finished ? new Date(job.finished).getTime() : null
   return {
     ...job,
-    queueDuration: ((processing || now ) - created)
+    queueDuration: ((processing || now ) - created),
+    processDuration: ((finished || now) - processing)
   }
 }
