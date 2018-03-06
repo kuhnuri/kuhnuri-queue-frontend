@@ -18,11 +18,11 @@ const mapDispatchToProps = dispatch => {
           'Accept': 'application/json'
         }
       })
-      .then(response => response.json())
-      .then(job => {
-        dispatch(fetchDetailsAction(job))
-        callback && callback()
-      })
+        .then(response => response.json())
+        .then(job => {
+          dispatch(fetchDetailsAction(job))
+          callback && callback()
+        })
   }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ListContainer from './containers/ListContainer'
 import CreateNew from './containers/CreateNew'
-import DetailsContainer  from './containers/DetailsContainer'
+import DetailsContainer from './containers/DetailsContainer'
 import Nav from './components/Nav'
 import { Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'

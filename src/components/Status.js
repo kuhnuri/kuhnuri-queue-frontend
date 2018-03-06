@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-import { durationApproximation} from '../utils'
+import { Link } from 'react-router-dom'
+import { durationApproximation } from '../utils'
 
 class Status extends Component {
   render() {

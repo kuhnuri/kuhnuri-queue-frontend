@@ -19,7 +19,7 @@ class List extends Component {
     return (
       <main className={this.state.loading ? 'loading' : ''}>
         <h1>Jobs</h1>
-        <table id="jobs" border="1" className="table">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>ID</th>

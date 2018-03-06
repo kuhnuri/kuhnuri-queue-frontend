@@ -19,75 +19,59 @@ class Details extends Component {
     return (
       <main className={`details ${this.state.loading ? 'loading' : ''}`}>
         <h1>Details</h1>
-        <dl>
-          <dt>
-            <label>ID</label>
-          </dt>
-          <dd className="id">
-            {this.props.match.params.id}
-          </dd>
-          <dt>
-            <label>Input</label>
-          </dt>
-          <dd className="input">
-            {this.props.job.input}
-          </dd>
-          <dt>
-            <label>Transtype</label>
-          </dt>
-          <dd className="transtype">
-            {this.props.job.transtype}
-          </dd>
-          <dt>
-            <label>Filter</label>
-          </dt>
-          <dd>
-            {this.props.job.filter || '-'}
-          </dd>
-          <dt>
-            <label>Parameters</label>
-          </dt>
-          <dd>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>force-unique</th>
-                  <td>false</td>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-          </dd>
-          <dt>
-            <label>Output</label>
-          </dt>
-          <dd className="output">
-            {this.props.job.output}
-          </dd>
-          <dt>
-            <label>Status</label>
-          </dt>
-          <dd className="status">
-            {this.props.job.status}
-          </dd>
-          <dt>
-            <label>Queue</label>
-          </dt>
-          <dd className="queued">{this.props.job.created}</dd>
-          <dt>
-            <label>Processing</label>
-          </dt>
-          <dd className="processing">
-            {this.props.job.processing}
-          </dd>
-          <dt>
-            <label>Finished</label>
-          </dt>
-          <dd className="finished">
-            {this.props.job.finished}
-          </dd>
-        </dl>
+        <div className="form-group">
+          <label>ID</label>
+          <input readonly className="form-control" value={this.props.match.params.id} />
+        </div>
+        <div className="form-group">
+          <label>Input</label>
+          <input readonly className="form-control" value={this.props.job.input} />
+        </div>
+        <div className="form-group">
+          <label>Transtype</label>
+          <input readonly className="form-control" value={this.props.job.transtype} />
+        </div>
+        <div className="form-group">
+          <label>Filter</label>
+          <input readonly className="form-control" value={this.props.job.filter || '-'} />
+        </div>
+        <div className="form-group">
+          <label>Parameters</label>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>force-unique</th>
+                <td>false</td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <div className="form-group">
+          <label>Output</label>
+          <input readonly className="form-control" value={this.props.job.output} />
+        </div>
+        <div className="form-group">
+          <label>Status</label>
+          <input readonly className="form-control" value={this.props.job.status} />
+        </div>
+        <div className="form-group">
+          <label>Queue</label>
+          <input readonly className="form-control" value={this.props.job.created} />
+        </div>
+        <div className="form-group">
+          <label>Processing</label>
+          <input readonly className="form-control" value={this.props.job.processing} />
+        </div>
+        <div className="form-group">
+          <label>Worker</label>
+          <input readonly className="form-control" value={this.props.job.worker} />
+        </div>
+        <div className="form-group">
+          <label>Finished</label>
+          <input readonly className="form-control" value={this.props.job.finished} />
+        </div>
       </main>
     );
   }

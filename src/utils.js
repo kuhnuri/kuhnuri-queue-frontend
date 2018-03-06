@@ -4,7 +4,7 @@ export const duration = (durationMillis) => {
   const minutes = Math.floor(duration / 60) % 60
   const hours = Math.floor(duration / (60 * 60)) % 24
   const days = Math.floor(duration / (60 * 60 * 24)) % 365
-  if (minutes === 0) {
+  if (minutes === 0) {
     return `${seconds} sec`
   } else if (hours === 0) {
     return `${minutes} min ${seconds} sec`
@@ -21,12 +21,12 @@ export const durationApproximation = (durationMillis) => {
   const minutes = Math.floor(duration / 60) % 60
   const hours = Math.floor(duration / (60 * 60)) % 24
   const days = Math.floor(duration / (60 * 60 * 24)) % 365
-  if (minutes === 0) {
+  if (minutes === 0) {
     return `${seconds} sec`
   } else if (hours === 0) {
     return `${minutes} min`
   } else if (days === 0) {
-    return `${hours} hours`      
+    return `${hours} hours`
   } else {
     return `${days} days`
   }
@@ -39,7 +39,7 @@ export const addDuration = job => {
   const finished = job.finished ? new Date(job.finished).getTime() : null
   return {
     ...job,
-    queueDuration: ((processing || now ) - created),
+    queueDuration: ((processing || now) - created),
     processDuration: ((finished || now) - processing)
   }
 }
