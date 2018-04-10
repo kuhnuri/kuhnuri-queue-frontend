@@ -4,8 +4,36 @@ import { Link } from 'react-router-dom'
 class Create extends Component {
   constructor(props) {
     super(props)
-    this.state = { loading: false }
+    this.state = {
+      loading: false
+    }
+    this.transtypes = {
+      online: {
+        label: "Online",
+        tasks: ['graphics', 'upload']
+      },
+      pdf: {
+        label: "PDF",
+        tasks: ['pdf2']
+      },
+      html5: {
+        label: "HTML5",
+        tasks: ['html5']
+      },
+    }
   }
+
+  createNew() {
+    this.setState({ loading: true })
+    this.props.create({
+      input: this.input.value,
+      transtype: this.transtypes[this.transtype.value].tasks,
+      filter: this.filter.value,
+      output: this.output.value,
+      params: {}
+    })
+  }
+
   render() {
     return (
       <main className={`create ${this.state.loading ? 'loading' : ''}`}>
@@ -17,16 +45,11 @@ class Create extends Component {
             type="url" required className="form-control" placeholder="Input file URI" />
         </div>
         <div className="form-group">
-          <label htmlFor="input">Input</label>
-          <input id="input" ref={input => { this.input = input }}
-            defaultValue="file:/Users/jelovirt/Work/dita-ot/src/main/docsrc/userguide.ditamap"
-            type="url" required className="form-control" placeholder="Input file URI" />
-        </div>
-        <div className="form-group">
           <label htmlFor="transtype">Transtype</label>
           <select id="transtype" ref={transtype => { this.transtype = transtype }} required className="form-control">
-            <option value="html5">HTML5</option>
-            <option value="pdf">PDF</option>
+            {Object.keys(this.transtypes).map(key =>
+              <option value={key}>{this.transtypes[key].label}</option>
+            )}
           </select>
         </div>
         <div className="form-group">
@@ -64,16 +87,6 @@ class Create extends Component {
         </p>
       </main>
     );
-  }
-  createNew() {
-    this.setState({ loading: true })
-    this.props.create({
-      input: this.input.value,
-      transtype: this.transtype.value,
-      filter: this.filter.value,
-      output: this.output.value,
-      params: {}
-    })
   }
 }
 
