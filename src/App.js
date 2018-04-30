@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router history={history}>
-          <div>
+          <div className="row">
             <Nav />
             <Route exact path="/" component={ListContainer} />
             <Route path="/create" component={CreateNew} />

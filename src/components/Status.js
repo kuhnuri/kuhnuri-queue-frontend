@@ -15,9 +15,9 @@ class Status extends Component {
   render() {
     return (
       <tr className={this.tableClass(this.props.status)}>
-        <td><Link to={'/details/' + this.props.id}>{this.props.id}</Link></td>
+        <td><Link to={'/details/' + this.props.id}>{this.props.id.substring(0, 8)}</Link></td>
         <td>{this.props.status}</td>
-        <td>{this.props.transtype[0].transtype}</td>
+        <td>{this.props.transtype.map(transtype => transtype.transtype).join(', ')}</td>
         <td title={this.props.created}>{this.props.queueDuration ? durationApproximation(this.props.queueDuration) : 'N/A'}</td>
         <td title={this.props.processing}>{this.props.processDuration ? durationApproximation(this.props.processDuration) : 'N/A'}</td>
       </tr>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class Nav extends Component {
   render() {
     return (
-      <nav>
+      <nav className="col-md-2">
         <ul>
           <li>
             <Link to="/">Main</Link>

@@ -40,6 +40,6 @@ export const addDuration = job => {
   return {
     ...job,
     queueDuration: ((processing || now) - created),
-    processDuration: ((finished || now) - processing)
+    processDuration: finished ? ((finished || now) - processing) : null
   }
 }

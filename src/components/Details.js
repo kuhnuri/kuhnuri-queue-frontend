@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Field from './Field'
 
 class Details extends Component {
   constructor(props) {
@@ -25,30 +26,17 @@ class Details extends Component {
 
   render() {
     return (
-      <main className={`details ${this.state.loading ? 'loading' : ''}`}>
+      <main className={`col-md-10 details ${this.state.loading ? 'loading' : ''}`}>
         <h1>Details</h1>
-        <div className="form-group">
-          <label>ID</label>
-          <input readonly className="form-control" value={this.props.match.params.id} />
-        </div>
-        {/* <div className="form-group">
-          <label>Status</label>
-          <input readonly className="form-control" value={this.props.job.status} />
-        </div> */}
-        <div className="form-group">
-          <label>Input</label>
-          <input readonly className="form-control" value={this.props.job.input} />
-        </div>
-        <div className="form-group">
-          <label>Output</label>
-          <input readonly className="form-control" value={this.props.job.output} />
-        </div>
+        {/* <Field label="ID" value={this.props.match.params.id} /> */}
+        <Field label="Input" value={this.props.job.input} readonly={true} />
+        <Field label="Output" value={this.props.job.output} readonly={true} />
         <div className="form-group">
           <label>Tasks</label>
           <table className="table table-bordered">
             <thead>
               <tr>
-                <th>ID</th>
+                {/* <th>ID</th> */}
                 <th>Status</th>
                 <th>Transtype</th>
                 <th>Input</th>
@@ -58,10 +46,10 @@ class Details extends Component {
             </thead>
             <tbody>
               {this.props.job.transtype && this.props.job.transtype.map(task =>
-                <tr className={this.tableClass(task.status)}>
-                  <td>
+                <tr className={this.tableClass(task.status)} id={task.id} key={task.id}>
+                  {/* <td>
                     {task.id}
-                  </td>
+                  </td> */}
                   <td>
                     {task.status}
                   </td>
@@ -69,48 +57,36 @@ class Details extends Component {
                     {task.transtype}
                   </td>
                   <td>
-                    {task.input}
+                    {task.input || '-'}
                   </td>
                   <td>
-                    {task.output}
+                    {task.output || '-'}
                   </td>
                   <td>
-                    {task.worker}
+                    {task.worker || '-'}
                   </td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
+        <Field label="Filter" value={this.props.job.filter || '-'} readonly={true} />
         <div className="form-group">
-          <label>Filter</label>
-          <input readonly className="form-control" value={this.props.job.filter || '-'} />
-        </div>
-        <div className="form-group">
-          <label>Parameters</label>
+          <label className="col-form-label">Parameters</label>
           <table className="table">
-            <thead>
+            <tbody>
               <tr>
                 <th>force-unique</th>
                 <td>false</td>
               </tr>
-            </thead>
+            </tbody>
             <tbody>
             </tbody>
           </table>
         </div>
-        <div className="form-group">
-          <label>Queue</label>
-          <input readonly className="form-control" value={this.props.job.created} />
-        </div>
-        <div className="form-group">
-          <label>Processing</label>
-          <input readonly className="form-control" value={this.props.job.processing} />
-        </div>
-        <div className="form-group">
-          <label>Finished</label>
-          <input readonly className="form-control" value={this.props.job.finished} />
-        </div>
+        <Field label="Queue" value={this.props.job.created} readonly={true} />
+        <Field label="Processing" value={this.props.job.processing} readonly={true} />
+        <Field label="Finished" value={this.props.job.finished} readonly={true} />
       </main>
     );
   }

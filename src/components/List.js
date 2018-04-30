@@ -17,7 +17,7 @@ class List extends Component {
 
   render() {
     return (
-      <main className={this.state.loading ? 'loading' : ''}>
+      <main className={`col-md-10 ${this.state.loading ? 'loading' : ''}`}>
         <h1>Jobs</h1>
         <table className="table table-striped">
           <thead>
