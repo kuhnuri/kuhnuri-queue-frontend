@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 class Nav extends Component {
   render() {
@@ -14,8 +14,8 @@ class Nav extends Component {
           </li>
         </ul>
       </nav>
-    )
+    );
   }
 }
 
-export default Nav
+export default Nav;

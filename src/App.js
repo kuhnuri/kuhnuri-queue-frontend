@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import ListContainer from './containers/ListContainer'
-import CreateNew from './containers/CreateNew'
-import DetailsContainer from './containers/DetailsContainer'
-import Nav from './components/Nav'
-import { Router, Route } from 'react-router-dom'
-import { Provider } from 'react-redux'
+import ListContainer from './containers/ListContainer';
+import CreateNew from './containers/CreateNew';
+import DetailsContainer from './containers/DetailsContainer';
+import Nav from './components/Nav';
+import { Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import reducers from './reducers'
-import thunk from 'redux-thunk'
-import { routerMiddleware } from 'react-router-redux'
+import reducers from './reducers';
+import thunk from 'redux-thunk';
+import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
 const initialState = {
@@ -20,11 +20,11 @@ const initialState = {
   },
   jobs: [],
   create: null
-}
+};
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const history = createHistory()
-const middleware = routerMiddleware(history)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const history = createHistory();
+const middleware = routerMiddleware(history);
 const store = createStore(
   reducers,
   initialState,

@@ -2,10 +2,10 @@
 const jobs = (state = [], action) => {
   switch (action.type) {
     case 'FETCH':
-      return action.payload.jobs
+      return action.payload.jobs;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default jobs
+export default jobs;

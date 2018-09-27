@@ -8,10 +8,10 @@ const jobs = (state = {}, action) => {
         status: 'WAITING',
         queueDuration: 0,
         processDuration: null
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default jobs
+export default jobs;

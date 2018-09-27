@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import Status from './Status'
+import Status from './Status';
 
 class List extends Component {
   constructor(props) {
-    super(props)
-    this.state = { loading: true }
+    super(props);
+    this.state = { loading: true };
   }
   componentDidMount() {
-    this.props.loadJobs(() => this.setState({ loading: false }))
-    this.interval = setInterval(this.props.loadJobs, 5000)
+    this.props.loadJobs(() => this.setState({ loading: false }));
+    this.interval = setInterval(this.props.loadJobs, 5000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   }
 
   render() {
@@ -30,14 +30,21 @@ class List extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.loading && <tr><td colSpan={5}>Loading...</td></tr>}
+            {this.state.loading && (
+              <tr>
+                <td colSpan={5}>Loading...</td>
+              </tr>
+            )}
             {this.props.jobs.map(job => (
-              <Status id={job.id} key={job.id}
+              <Status
+                id={job.id}
+                key={job.id}
                 status={job.status}
                 transtype={job.transtype}
                 queueDuration={job.queueDuration}
                 created={job.created}
-                processDuration={job.processDuration} />
+                processDuration={job.processDuration}
+              />
             ))}
           </tbody>
         </table>
@@ -46,4 +53,4 @@ class List extends Component {
   }
 }
 
-export default List
+export default List;

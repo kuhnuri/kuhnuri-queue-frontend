@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import Field from './Field'
+import Field from './Field';
 
 class Details extends Component {
   constructor(props) {
-    super(props)
-    this.state = { loading: true }
+    super(props);
+    this.state = { loading: true };
   }
   componentDidMount() {
-    this.props.loadJob(this.props.match.params.id, () => this.setState({ loading: false }))
-    this.interval = setInterval(() => this.props.loadJob(this.props.match.params.id), 5000)
+    this.props.loadJob(this.props.match.params.id, () => this.setState({ loading: false }));
+    this.interval = setInterval(() => this.props.loadJob(this.props.match.params.id), 5000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   }
 
   tableClass(status) {
     switch (status) {
-      case 'process': return 'table-active'
-      case 'done': return 'table-success'
-      case 'error': return 'table-danger'
-      default: return ''
+      case 'process':
+        return 'table-active';
+      case 'done':
+        return 'table-success';
+      case 'error':
+        return 'table-danger';
+      default:
+        return '';
     }
   }
 
@@ -45,32 +49,23 @@ class Details extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.job.transtype && this.props.job.transtype.map(task =>
-                <tr className={this.tableClass(task.status)} id={task.id} key={task.id}>
-                  {/* <td>
+              {this.props.job.transtype &&
+                this.props.job.transtype.map(task => (
+                  <tr className={this.tableClass(task.status)} id={task.id} key={task.id}>
+                    {/* <td>
                     {task.id}
                   </td> */}
-                  <td>
-                    {task.status}
-                  </td>
-                  <td>
-                    {task.transtype}
-                  </td>
-                  <td>
-                    {task.input || '-'}
-                  </td>
-                  <td>
-                    {task.output || '-'}
-                  </td>
-                  <td>
-                    {task.worker || '-'}
-                  </td>
-                </tr>
-              )}
+                    <td>{task.status}</td>
+                    <td>{task.transtype}</td>
+                    <td>{task.input || '-'}</td>
+                    <td>{task.output || '-'}</td>
+                    <td>{task.worker || '-'}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
-        <Field label="Filter" value={this.props.job.filter || '-'} readonly={true} />
+        {/* <Field label="Filter" value={this.props.job.filter || '-'} readonly={true} /> */}
         <div className="form-group">
           <label className="col-form-label">Parameters</label>
           <table className="table">
@@ -80,8 +75,7 @@ class Details extends Component {
                 <td>false</td>
               </tr>
             </tbody>
-            <tbody>
-            </tbody>
+            <tbody />
           </table>
         </div>
         <Field label="Queue" value={this.props.job.created} readonly={true} />
